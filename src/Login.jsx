@@ -16,6 +16,7 @@ export default function Login() {
         loginuser(email, password)
             .then(result => {
                 console.log(result.user)
+                alert('Congratulations you are success fully log in')
             })
             .then(error => {
                 console.log(error)

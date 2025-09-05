@@ -17,6 +17,7 @@ export default function Register() {
         createRegisterAccount(email, password)
             .then(result => {
                 console.log(result.user)
+                alert('Congratulations you are success fully Register')
             })
             .then(error => {
                 console.log(error)
