@@ -10,6 +10,7 @@ import {
 import Home from './Home.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
+import AuthPro from './Provider/AuthPro.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthPro>
+      <RouterProvider router={router} />
+    </AuthPro>
   </StrictMode>,
 )

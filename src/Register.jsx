@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContextCreate } from './Provider/AuthPro'
 
 export default function Register() {
+
+    const { createRegisterAccount } = useContext(AuthContextCreate)
     const heandlesubmit = (e) => {
         e.preventDefault()
         const shortData = e.target
@@ -9,6 +12,16 @@ export default function Register() {
         const password = shortData.password.value
         const objdata = { email, password }
         console.log(objdata)
+
+
+        createRegisterAccount(email, password)
+            .then(result => {
+                console.lof(result.user)
+            })
+            .then(error => {
+                console.log(error)
+            });
+
     }
     return (
         <div>
