@@ -5,6 +5,8 @@ export default function Navbar() {
 
     const navLink = <>
         <Link to='/'><li><a>Home</a></li></Link>
+        <Link to='/register'><li><a>Register Now</a></li></Link>
+        <Link to='/login'><li><a>Login</a></li></Link>
     </>
     return (
         <div>

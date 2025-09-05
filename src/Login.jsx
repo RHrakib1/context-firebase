@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Login() {
     return (
@@ -18,6 +19,7 @@ export default function Login() {
                                 <input type="password" className="input" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-neutral mt-4">Login</button>
+                                <p>You are new user?so please <Link to='/register'><span>Register Now</span></Link> </p>
                             </fieldset>
                         </div>
                     </div>
