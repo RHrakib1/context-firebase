@@ -19,7 +19,7 @@ export default function Login() {
                                 <input type="password" className="input" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
                                 <button className="btn btn-neutral mt-4">Login</button>
-                                <p>You are new user?so please <Link to='/register'><span>Register Now</span></Link> </p>
+                                <p>You are new user?so please <Link to='/register'><span className='underline font-bold text-blue-400 text-sm'>Register Now</span></Link> </p>
                             </fieldset>
                         </div>
                     </div>
