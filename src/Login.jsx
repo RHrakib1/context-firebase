@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContextCreate } from './Provider/AuthPro'
 
 export default function Login() {
+    const { loginuser } = useContext(AuthContextCreate)
 
     const heandlesubmit = (e) => {
         e.preventDefault()
@@ -10,6 +12,16 @@ export default function Login() {
         const password = shortData.password.value
         const objdata = { email, password }
         console.log(objdata)
+
+        loginuser(email, password)
+            .then(result => {
+                console.log(result.user)
+            })
+            .then(error => {
+                console.log(error)
+            })
+
+
     }
     return (
         <div>

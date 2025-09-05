@@ -16,7 +16,7 @@ export default function Register() {
 
         createRegisterAccount(email, password)
             .then(result => {
-                console.lof(result.user)
+                console.log(result.user)
             })
             .then(error => {
                 console.log(error)
