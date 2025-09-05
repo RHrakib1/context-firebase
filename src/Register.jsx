@@ -2,6 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Register() {
+    const heandlesubmit = (e) => {
+        e.preventDefault()
+        const shortData = e.target
+        const email = shortData.email.value
+        const password = shortData.password.value
+        const objdata = { email, password }
+        console.log(objdata)
+    }
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
@@ -11,14 +19,16 @@ export default function Register() {
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
-                            <fieldset className="fieldset">
-                                <label className="label">Email</label>
-                                <input type="email" className="input" placeholder="Email" />
-                                <label className="label">Password</label>
-                                <input type="password" className="input" placeholder="Password" />
-                                <button className="btn btn-neutral mt-4">Register</button>
-                                <p>You have an account?so please <Link to='/login'><span className='underline font-bold text-blue-400 text-sm'>Login</span></Link> </p>
-                            </fieldset>
+                            <form onSubmit={heandlesubmit}>
+                                <fieldset className="fieldset">
+                                    <label className="label">Email</label>
+                                    <input name='email' type="email" className="input" placeholder="Email" />
+                                    <label className="label">Password</label>
+                                    <input name='password' type="password" className="input" placeholder="Password" />
+                                    <button className="btn btn-neutral mt-4">Register</button>
+                                    <p>You have an account?so please <Link to='/login'><span className='underline font-bold text-blue-400 text-sm'>Login</span></Link> </p>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </div>
