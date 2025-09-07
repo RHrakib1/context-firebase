@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import React, { createContext, useState } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import React, { createContext, useEffect, useState } from 'react'
 import auth from '../Firebase/Firebase.config'
 
 export const AuthContextCreate = createContext()
@@ -11,16 +11,31 @@ export default function AuthPro({ children }) {
     const createRegisterAccount = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
-    const loginuser =(email,password)=>{
-        return signInWithEmailAndPassword(auth,email,password)
+    const loginuser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
+
+    const logout = () => {
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentuser => {
+            setuser(currentuser)
+            console.log('obzarving current user', currentuser)
+        })
+        return () => {
+            unsubscribe()
+        }
+    }, [])
 
 
     const userInfo = {
         createRegisterAccount,
         loginuser,
         user,
-        loadding
+        loadding,
+        logout
     }
 
     return (

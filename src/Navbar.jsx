@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContextCreate } from './Provider/AuthPro'
+import { signOut } from 'firebase/auth'
 
 export default function Navbar() {
+    const { user, logout } = useContext(AuthContextCreate)
+    const hendlesignout = () => {
+        logout()
+            .then(() => console.log('successfully sign out'))
+            .catch((error) => {
+                console.log(error)
+            })
+
+    }
 
     const navLink = <>
         <Link to='/'><li><a>Home</a></li></Link>
@@ -30,6 +41,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <a onClick={hendlesignout} className="btn">SignOut</a>
                     <a className="btn">Fire</a>
                 </div>
             </div>
