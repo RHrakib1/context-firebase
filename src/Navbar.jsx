@@ -7,7 +7,7 @@ export default function Navbar() {
     const { user, logout } = useContext(AuthContextCreate)
     const hendlesignout = () => {
         logout()
-            .then(() => console.log('successfully sign out'))
+            .then(() => alert('successfully sign out'))
             .catch((error) => {
                 console.log(error)
             })
@@ -18,6 +18,7 @@ export default function Navbar() {
         <Link to='/'><li><a>Home</a></li></Link>
         <Link to='/register'><li><a>Register Now</a></li></Link>
         <Link to='/login'><li><a>Login</a></li></Link>
+        <Link to='/order'><li><a>Order</a></li></Link>
     </>
     return (
         <div>
@@ -41,8 +42,14 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a onClick={hendlesignout} className="btn">SignOut</a>
-                    <a className="btn">Fire</a>
+                    {
+                        user ? <>
+                            <a onClick={hendlesignout} className="btn">SignOut</a>
+                            <span>{user.email}</span>
+                        </> : <Link to='/login'><button className="btn">Fire</button></Link>
+                    }
+
+                    {/* <a className="btn">Fire</a> */}
                 </div>
             </div>
         </div>
