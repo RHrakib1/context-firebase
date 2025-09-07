@@ -1,10 +1,19 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContextCreate } from './Provider/AuthPro'
+import { FaGoogle } from "react-icons/fa";
+
 
 export default function Register() {
 
-    const { createRegisterAccount } = useContext(AuthContextCreate)
+    const { createRegisterAccount, googleAccount } = useContext(AuthContextCreate)
+    const hendlegoogle = () => {
+        googleAccount()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => console.log(error))
+    }
     const heandlesubmit = (e) => {
         e.preventDefault()
         const shortData = e.target
@@ -19,7 +28,7 @@ export default function Register() {
                 console.log(result.user)
                 alert('Congratulations you are success fully Register')
             })
-            .then(error => {
+            .catch(error => {
                 console.log(error)
             });
 
@@ -40,9 +49,11 @@ export default function Register() {
                                     <label className="label">Password</label>
                                     <input name='password' type="password" className="input" placeholder="Password" />
                                     <button className="btn btn-neutral mt-4">Register</button>
+
                                     <p>You have an account?so please <Link to='/login'><span className='underline font-bold text-blue-400 text-sm'>Login</span></Link> </p>
                                 </fieldset>
                             </form>
+                            <button onClick={hendlegoogle} className="btn btn-neutral mt-4"> <FaGoogle></FaGoogle> </button>
                         </div>
                     </div>
                 </div>
