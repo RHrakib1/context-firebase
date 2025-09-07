@@ -10,19 +10,23 @@ export default function AuthPro({ children }) {
 
     const createRegisterAccount = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
+        setloadding(true)
     }
     const loginuser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
+        setloadding(true)
     }
 
     const logout = () => {
         return signOut(auth)
+        setloadding(true)
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentuser => {
             setuser(currentuser)
             console.log('obzarving current user', currentuser)
+            setloadding(false)
         })
         return () => {
             unsubscribe()
@@ -35,7 +39,8 @@ export default function AuthPro({ children }) {
         loginuser,
         user,
         loadding,
-        logout
+        logout,
+
     }
 
     return (
