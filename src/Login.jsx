@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContextCreate } from './Provider/AuthPro'
 
 export default function Login() {
     const { loginuser } = useContext(AuthContextCreate)
+    const navigate = useNavigate()
 
     const heandlesubmit = (e) => {
         e.preventDefault()
@@ -17,6 +18,8 @@ export default function Login() {
             .then(result => {
                 console.log(result.user)
                 alert('Congratulations you are success fully log in')
+                e.target.reset()
+                navigate('/')
             })
             .then(error => {
                 console.log(error)

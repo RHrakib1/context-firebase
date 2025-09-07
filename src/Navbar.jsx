@@ -19,6 +19,12 @@ export default function Navbar() {
         <Link to='/register'><li><a>Register Now</a></li></Link>
         <Link to='/login'><li><a>Login</a></li></Link>
         <Link to='/order'><li><a>Order</a></li></Link>
+        {
+            user && <>
+                <Link to='/profile'><li><a>Profile</a></li></Link>
+                <Link to='/purchas'><li><a>Purchas</a></li></Link>
+            </>
+        }
     </>
     return (
         <div>
